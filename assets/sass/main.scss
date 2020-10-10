@@ -27,6 +27,12 @@ body {
   width: 100%;
   z-index: 999;
   height: 80px;
+  .close-image {
+    display: none;
+  }
+  .menu-header {
+    display: none;
+  }
   .container {
     flex-direction: row;
     display: flex;
@@ -61,6 +67,9 @@ body {
     }
     li{
       display: flex;
+      &:first-child {
+        display: none;
+      }
       &.active,
       &:hover {
         a {
@@ -137,6 +146,9 @@ body {
         background: rgb(255,169,54);
         background: linear-gradient(137deg, rgba(255,169,54,1) 0%, rgba(254,175,27,1) 40%, rgba(254,93,9,1) 80%, rgba(254,82,2,1) 100%);
         border-radius: 30px;
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
       }
     }
     &-slider {
@@ -350,22 +362,32 @@ body {
         display: flex;
         flex-direction: column;
         .place {
-          margin-bottom: 30px;
           border-radius: 12px;
-          &:last-child {
-            margin-bottom: 0;
+          &:first-child {
+            margin-bottom: 30px;
           }
         }
+        .main-place {
+          display: none;
+        }
+      }
+      .place-image {
+        margin-bottom: 20px;
+        width: 100%;
       }
       img {
         width: 100%;
         height: auto;
-        margin-bottom: 20px;
       }
-      .place-star img {
-        width: 20px;
-        height: 20px;
-        margin-bottom: 0;
+      .place-star {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        img {
+          width: 20px;
+          height: 20px;
+          margin: auto;
+        }  
       }
       .place-cate {
         margin-bottom: 16px;
@@ -373,6 +395,7 @@ body {
         color: #999999;
         padding-right: 24px;
         padding-left: 24px;
+        text-transform: uppercase;
       }
       .place-name {
         margin-bottom: 16px;
@@ -406,6 +429,22 @@ body {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      > h2 {
+        font-size: 40px;
+        font-weight: 700;
+        color: #333;
+        line-height: 48px;
+        margin-bottom: 20px;
+        width: 100%;
+      }
+      > p {
+        font-size: 16px;
+        font-weight: 400;
+        color: #999999;
+        line-height: 24px;
+        margin-bottom: 40px;
+        width: 100%;
+      }
     }
     button {
       width: 170px;
@@ -621,6 +660,13 @@ body {
           margin: 0;
           color: #333;
           cursor: pointer;
+          padding-right: 20px;
+          position: relative;
+          svg {
+            position: absolute;
+            right: 0;
+            top: 4px;
+          }
         }
         &.active {
           h4 {
@@ -673,6 +719,9 @@ body {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
+      a {
+        color: white;
+      }
       > div {
         width: 25%;
       }

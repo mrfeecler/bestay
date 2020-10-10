@@ -8,7 +8,7 @@ $(document)
         $('.owl-carousel').owlCarousel({
             nav:false,
             loop: true,
-            autoplay: true,
+            autoplay: false,
             autoplayTimeout: 1000,
             dots: true,
             items:1
@@ -20,6 +20,26 @@ $(document)
                 $('#header').removeClass('active');
             }
         });
+        if ($( window ).width() < 992) {
+            $('#main .intro-app .services').addClass('owl-carousel');
+            $('#main .questions .container .others-place').addClass('owl-carousel');
+            $('#main .questions .container .others-place').owlCarousel({
+                loop: false,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                nav:false,
+                dots: false,
+                items:1
+            });
+            $('#main .intro-app .services').owlCarousel({
+                loop: false,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                nav:false,
+                dots: false,
+                items:1
+            })
+        }
     })
     .on('click', '.special-rooms button', function() {
         $('.special-rooms .special-room:nth-child(n+9)').toggle(400);
@@ -51,6 +71,12 @@ $(document)
             $(".customer-say-main-image .cta-nav button.nav-next").attr('nextsrc', parseInt(numbered) + 1);
             $('.customer-say-main-image .customer-say-gallery-image').html(html_content.prop('outerHTML'));
         }
+    })
+    .on('click', '.menu-area .close-image', function() {
+        $('#header .menu-area').removeClass('active');
+    })
+    .on('click', '#header .menu-header', function() {
+        $('#header .menu-area').addClass('active');
     })
     .on('click', '#main .support li', function() {
         $(this).toggleClass('active');
