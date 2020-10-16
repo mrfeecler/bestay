@@ -3,6 +3,21 @@ $.fn.extend({
         return this.text(this.text() == b ? a : b);
     }
 });
+var count = 0;
+function transition() {
+    if (count < $('.customer-say-gallery-images .customer-say-gallery-image').length) {
+        $('.customer-say-main-image .cta-nav button.nav-next').click();    
+    } else {
+        var numbered = 0
+        var html_content = $('.customer-say-gallery-images .customer-say-gallery-image').eq(0);
+        $(".customer-say-main-image .cta-nav button.nav-prev").attr('prevsrc', parseInt(numbered) - 1);
+        $(".customer-say-main-image .cta-nav button.nav-next").attr('nextsrc', parseInt(numbered) + 1);
+        $('.customer-say-main-image .customer-say-gallery-image').html(html_content.prop('outerHTML'));
+        count = 0;
+    }
+    count++;
+}
+setInterval(transition, 2000);
 $(document)
     .ready(function() {
         $('.owl-carousel').owlCarousel({
